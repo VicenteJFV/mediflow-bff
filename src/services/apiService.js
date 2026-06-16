@@ -9,7 +9,7 @@ const MS_LABORATORIOS_URL = process.env.MS_LABORATORIOS_URL || 'http://localhost
  * @returns {Promise<Object>}
  */
 async function getClinicalHistory(patientId) {
-  const response = await axios.get(`${MS_HCE_URL}/api/hce/patients/${patientId}`);
+  const response = await axios.get(`${MS_HCE_URL}/api/patients/${patientId}`);
   return response.data;
 }
 
@@ -19,7 +19,7 @@ async function getClinicalHistory(patientId) {
  * @returns {Promise<Object>}
  */
 async function getLabOrders(patientId) {
-  const response = await axios.get(`${MS_LABORATORIOS_URL}/api/laboratorios/patients/${patientId}`);
+  const response = await axios.get(`${MS_LABORATORIOS_URL}/api/laboratory/patients/${patientId}`);
   return response.data;
 }
 

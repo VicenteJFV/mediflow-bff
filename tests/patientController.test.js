@@ -22,10 +22,10 @@ describe('Patient Controller - getFullPatientHistory', () => {
     ];
 
     axios.get.mockImplementation((url) => {
-      if (url.includes(':8080/api/hce/patients/123')) {
+      if (url.includes(':8080/api/patients/123')) {
         return Promise.resolve({ data: mockHceData });
       }
-      if (url.includes(':8081/api/laboratorios/patients/123')) {
+      if (url.includes(':8081/api/laboratory/patients/123')) {
         return Promise.resolve({ data: mockLabData });
       }
       return Promise.reject(new Error('Unknown URL in mock'));
@@ -46,10 +46,10 @@ describe('Patient Controller - getFullPatientHistory', () => {
 
   test('should return 500 when ms-hce fails', async () => {
     axios.get.mockImplementation((url) => {
-      if (url.includes(':8080/api/hce/patients/123')) {
+      if (url.includes(':8080/api/patients/123')) {
         return Promise.reject(new Error('HCE Service Unavailable'));
       }
-      if (url.includes(':8081/api/laboratorios/patients/123')) {
+      if (url.includes(':8081/api/laboratory/patients/123')) {
         return Promise.resolve({ data: [] });
       }
       return Promise.reject(new Error('Unknown URL in mock'));
@@ -70,10 +70,10 @@ describe('Patient Controller - getFullPatientHistory', () => {
 
   test('should return 500 when ms-laboratorios fails', async () => {
     axios.get.mockImplementation((url) => {
-      if (url.includes(':8080/api/hce/patients/123')) {
+      if (url.includes(':8080/api/patients/123')) {
         return Promise.resolve({ data: { id: 123 } });
       }
-      if (url.includes(':8081/api/laboratorios/patients/123')) {
+      if (url.includes(':8081/api/laboratory/patients/123')) {
         return Promise.reject(new Error('Lab Service Down'));
       }
       return Promise.reject(new Error('Unknown URL in mock'));
@@ -100,10 +100,10 @@ describe('Patient Controller - getFullPatientHistory', () => {
     };
 
     axios.get.mockImplementation((url) => {
-      if (url.includes(':8080/api/hce/patients/999')) {
+      if (url.includes(':8080/api/patients/999')) {
         return Promise.reject(axiosError);
       }
-      if (url.includes(':8081/api/laboratorios/patients/999')) {
+      if (url.includes(':8081/api/laboratory/patients/999')) {
         return Promise.resolve({ data: [] });
       }
       return Promise.reject(new Error('Unknown URL in mock'));
@@ -171,10 +171,10 @@ describe('Patient Controller - getFullPatientHistory', () => {
       ];
 
       axios.get.mockImplementation((url) => {
-        if (url.includes(':8080/api/hce/patients/1')) {
+        if (url.includes(':8080/api/patients/1')) {
           return Promise.resolve({ data: mockHceData });
         }
-        if (url.includes(':8081/api/laboratorios/patients/1')) {
+        if (url.includes(':8081/api/laboratory/patients/1')) {
           return Promise.resolve({ data: mockLabData });
         }
         return Promise.reject(new Error('Unknown URL in mock'));
@@ -239,7 +239,7 @@ describe('Patient Controller - getFullPatientHistory', () => {
       };
 
       axios.get.mockImplementation((url) => {
-        if (url.includes(':8080/api/hce/patients/1')) {
+        if (url.includes(':8080/api/patients/1')) {
           return Promise.resolve({ data: mockHceData });
         }
         return Promise.reject(new Error('Unknown URL in mock'));
